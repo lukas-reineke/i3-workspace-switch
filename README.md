@@ -1,7 +1,7 @@
 # i3-workspace-switch
 
-A utility for the [i3](https://i3wm.org) tiling window manager, which allows to switch workspace by specifying a number representing their position on an output.
-This effectively allows to switch unnumbered workspaces as if they had consecutive numbers.
+A utility for the [i3](https://i3wm.org) tiling window manager, which assigns each output its own set of 10 workspaces
+This effectively allows to switch workspaces on each output as if it was the only connected output
 
 # Installation
 
@@ -45,11 +45,7 @@ positional arguments:
 
 optional arguments:
   -h, --help            show this help message and exit
-  -w OUTPUT, --where OUTPUT
-                        The output on which to search for this workspace to
-                        switch to. Either an output name (from xrandr) or
-                        "CURRENT" to use the current output. (default:
-                        CURRENT)
+  -m, --move            move the current container instead of switching to it
 ```
 
 # License

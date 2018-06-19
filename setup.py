@@ -11,5 +11,5 @@ setup(
 
     install_requires=['i3-py'],
 
-    scripts=['i3-workspace-switch']
+    scripts=['i3-workspace-switch.py']
 )
