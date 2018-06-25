@@ -7,13 +7,17 @@ import i3
 
 
 def get_focused_output(workspaces):
-    for workspace in workspaces:
-        if workspace['focused']:
-            return workspace['output']
+    return [ws for ws in i3.get_workspaces() if ws['focused']][0]['output']
 
 
-def get_available_workspaces(workspaces):
-    outputs = sorted(set(map(lambda x: x['output'], workspaces)))
+def get_active_outputs():
+    return sorted(
+        [outp['name'] for outp in i3.get_outputs() if outp['active']]
+    )
+
+
+def get_available_workspaces():
+    outputs = get_active_outputs()
     available_workspaces = {}
 
     for index, output in enumerate(outputs):
@@ -52,7 +56,7 @@ def main():
 
     workspaces = i3.get_workspaces()
 
-    available_workspaces = get_available_workspaces(workspaces)
+    available_workspaces = get_available_workspaces()
     focused_output = get_focused_output(workspaces)
     command = get_command(args)
 
