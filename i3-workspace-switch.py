@@ -1,13 +1,7 @@
 #!/usr/bin/env python
 
 import argparse
-import sys
-
 import i3
-
-
-def get_focused_output(workspaces):
-    return [ws for ws in i3.get_workspaces() if ws['focused']][0]['output']
 
 
 def get_active_outputs():
@@ -50,14 +44,8 @@ def main():
 
     args = parser.parse_args()
 
-    if args.number < 1 or args.number > 10:
-        print('Workspace number must be >= 1 and <= 10')
-        sys.exit(1)
-
-    workspaces = i3.get_workspaces()
-
     available_workspaces = get_available_workspaces()
-    focused_output = get_focused_output(workspaces)
+    focused_output = i3.filter(focused=True)[0]['output']
     command = get_command(args)
 
     i3.command(
